@@ -1,43 +1,44 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package aplicacion;
 
 import controladores.Generador;
+import controladores.Lector;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
+import modelo.ColeccionDespacho;
 import modelo.Despacho;
-
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
  
 /**
  *
- * @author Pauli
+ * @author 
  */
 public class App {
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
-        String path = "merlina_legacy.xlsx";
-        File file = new File(path);
-
-        FileInputStream fileStream = new FileInputStream(file);
-        // leer archivo excel
-        XSSFWorkbook workbook = new XSSFWorkbook(fileStream);
-        //obtener la hoja que se va leer
-        XSSFSheet sheet = workbook.getSheetAt(0);
-        //obtener todas las filas de la hoja excel
+    public static void main(String[] args) throws IOException{
+        String path;
+        File file;
+        Lector lector;
+        ColeccionDespacho despachos;
+        Despacho despacho;
         
-        Generador generador = new Generador();
+        path = "merlina_legacy.xlsx";
+        file = new File(path);
+        lector = new Lector(file);
+        despachos = lector.generarListaDespachos();
         
-        generador.generarListaDespachos(sheet).forEach((Despacho despacho) -> System.out.println(despacho.getNomProducto()));
+        
+        //Mostramos la coleccion
+        despachos.irAinicio(); //Nos aseguramos de estar en el incio.
+        
+        while(despachos.finalDeLista() == false) //Mientra no sea el final de la lista.
+        { 
+            despacho = despachos.obtenerActual(); //Obtenemos el elemento actual.
+            
+            System.out.println(despacho.getNumeroDespacho()); //Mostramos el codigo del producto.
+            
+            despachos.avanzar(); //Avanzamos en la coleccion.
+        }
     }
 }

@@ -82,17 +82,65 @@ public class Despacho
         return unidades;
     }
 
-  
-    public int getValorDespacho() 
-    {
+    public int getValorDespacho() {
         return valorDespacho;
     }
 
-    public Date getFechaEnvio() 
-    {
+    public Date getFechaEnvio() {
         return fechaEnvio;
     }
 
+    public void setNumeroDespacho(int numeroDespacho) {
+        this.numeroDespacho = numeroDespacho;
+    }
+
+    public void setFechaIngreso(Date fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public void setCodIso(String codIso) {
+        this.codIso = codIso;
+    }
+
+    public void setCodProducto(int codProducto) {
+        this.codProducto = codProducto;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public void setNomProducto(String nomProducto) {
+        this.nomProducto = nomProducto;
+    }
+
+    public void setFormato(double formato) {
+        this.formato = formato;
+    }
+
+    public void setUnidades(int unidades) {
+        this.unidades = unidades;
+    }
+
+    public void setValorDespacho(int valorDespacho) {
+        this.valorDespacho = valorDespacho;
+    }
+
+    public void setFechaEnvio(Date fechaEnvio) {
+        this.fechaEnvio = fechaEnvio;
+    }
     
     public int localizarDespachoEnXFila(int n, double latitudExtremoNorte,  double largoAltura)
     {
