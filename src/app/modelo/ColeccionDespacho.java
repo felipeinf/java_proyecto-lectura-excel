@@ -1,17 +1,13 @@
-package modelo;
+package app.modelo;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-
 
 public class ColeccionDespacho {
-    private LinkedList<Despacho> despachos;
-    //private ArrayList<Despacho> despachos;
+    private ArrayList<Despacho> despachos;
     private int posicionActual;
     
     public ColeccionDespacho(){
-        despachos = new LinkedList<>(); 
-        //despachos = new ArrayList<>();
+        despachos = new ArrayList<>();
         posicionActual = 0;
     }
     

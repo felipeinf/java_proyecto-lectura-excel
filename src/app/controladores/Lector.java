@@ -1,4 +1,4 @@
-package controladores;
+package app.controladores;
 
 import java.io.FileInputStream;
 import java.io.File;
@@ -11,19 +11,15 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import modelo.ColeccionDespacho;
-import modelo.Despacho;
+import app.modelo.ColeccionDespacho;
+import app.modelo.Despacho;
 
-/**
- *
- * @author 
- */
 public class Lector {
     private ColeccionDespacho despachos;
     
-    private FileInputStream fileStream;   // leer archivo excel
-    private XSSFWorkbook workbook;        //obtener la hoja que se va leer
-    private XSSFSheet sheet;              //obtener todas las filas de la hoja excel
+    private FileInputStream fileStream;   
+    private XSSFWorkbook workbook;        
+    private XSSFSheet sheet;              
         
     private double oeste;
     private double este;
@@ -39,8 +35,8 @@ public class Lector {
         despachos = new ColeccionDespacho(); //Se instancia la coleccion.
        
         fileStream = new FileInputStream(file);
-        workbook = new XSSFWorkbook(fileStream);
-        sheet = workbook.getSheetAt(0);
+        workbook = new XSSFWorkbook(fileStream);  // leer archivo excel
+        sheet = workbook.getSheetAt(0); //obtener la hoja que se va leer
     }
     
     public ColeccionDespacho generarListaDespachos(){
@@ -49,8 +45,8 @@ public class Lector {
         Row row;
         Cell cell;
         
-        rowIterator = sheet.iterator();
-        rowIterator.next();  //Se salta la primera colummna ya que contiene los nombres de las filas.
+        rowIterator = sheet.iterator(); //obtener todas las filas de la hoja excel
+        rowIterator.next();  //Se salta la primera fila ya que contiene los nombres de las columnas.
 
         while( rowIterator.hasNext()){
             row = rowIterator.next();

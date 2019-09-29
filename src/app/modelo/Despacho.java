@@ -1,14 +1,12 @@
-package modelo;
+package app.modelo;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Despacho 
 {
-    SimpleDateFormat sdf= new SimpleDateFormat("dd-MM-yyyy");
-
-    private int numeroDespacho;       //Verificar qué es una variable privada "final"
-    private Date fechaIngreso;     //Verificar como utilizar atributos Date, por mientras se usa String para fechas
+    private int numeroDespacho;       
+    private Date fechaIngreso;     
     private String ciudad;
     private double longitud;
     private double latitud;
@@ -19,10 +17,13 @@ public class Despacho
     private double formato;
     private int unidades;
     private  int valorDespacho;
-    public Date fechaEnvio; // La puse como "public" ya que una vez que se haga el envio se debe poner las fecha
+    private Date fechaEnvio; 
 
-   
+    SimpleDateFormat sdf;
+
     public Despacho(int numeroDespacho, Date fechaIngreso, String ciudad, double longitud, double latitud, String codIso, int codProducto, String marca, String nomProducto, double formato, int unidades, int valorDespacho, Date fechaEnvio) {
+        sdf = new SimpleDateFormat("dd-MM-yyyy");
+        
         this.numeroDespacho = numeroDespacho;
         this.fechaIngreso = fechaIngreso;
         this.ciudad = ciudad;
@@ -162,5 +163,4 @@ public class Despacho
         }
         return m;
     }
-    
 }
