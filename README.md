@@ -1,5 +1,5 @@
 <h1>Sistema de despachos</h1>
-<p>Para desplegar arraste el contenido de este repositorio a Netbeans 8.2.</p>
+<p>Para desplegar arrastre el contenido de este repositorio a Netbeans 8.2.</p>
 
 <h4>Parte del output al ejecutar:</h4>
 
