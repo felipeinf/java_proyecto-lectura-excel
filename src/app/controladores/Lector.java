@@ -15,28 +15,81 @@ import app.modelo.ColeccionDespacho;
 import app.modelo.Despacho;
 
 public class Lector {
-    private ColeccionDespacho despachos;
+    private final ColeccionDespacho despachos;
     
-    private FileInputStream fileStream;   
-    private XSSFWorkbook workbook;        
-    private XSSFSheet sheet;              
+    final private FileInputStream fileStream;   
+    final private XSSFWorkbook workbook;        
+    final private XSSFSheet sheet;              
         
     private double oeste;
     private double este;
     private double norte;
     private double sur;
     
-    private final double latitudExtremoNorte= -91.000000;
-    private final double latitudExtremoSur = 91.000000;
-    private final double longitudExtremoEste= -181.000000;
-    private final double longitudExtremoOeste= 181.00000;
+    private double latitudExtremoNorte;
+    private double latitudExtremoSur;
+    private double longitudExtremoEste;
+    private double longitudExtremoOeste;
     
     public Lector(File file) throws IOException {
         despachos = new ColeccionDespacho(); //Se instancia la coleccion.
-       
         fileStream = new FileInputStream(file);
         workbook = new XSSFWorkbook(fileStream);  // leer archivo excel
         sheet = workbook.getSheetAt(0); //obtener la hoja que se va leer
+
+        //Aca seteamos los limites
+        latitudExtremoNorte= -91.000000;
+        latitudExtremoSur = 91.000000;
+        longitudExtremoEste= -181.000000;
+        longitudExtremoOeste= 181.00000;
+    }
+
+    public double getOeste() {
+        return oeste;
+    }
+
+    public double getEste() {
+        return este;
+    }
+
+    public double getNorte() {
+        return norte;
+    }
+
+    public double getSur() {
+        return sur;
+    }
+
+    public double getLatitudExtremoNorte() {
+        return latitudExtremoNorte;
+    }
+
+    public void setLatitudExtremoNorte(double latitudExtremoNorte) {
+        this.latitudExtremoNorte = latitudExtremoNorte;
+    }
+
+    public double getLatitudExtremoSur() {
+        return latitudExtremoSur;
+    }
+
+    public void setLatitudExtremoSur(double latitudExtremoSur) {
+        this.latitudExtremoSur = latitudExtremoSur;
+    }
+
+    public double getLongitudExtremoEste() {
+        return longitudExtremoEste;
+    }
+
+    public void setLongitudExtremoEste(double longitudExtremoEste) {
+        this.longitudExtremoEste = longitudExtremoEste;
+    }
+
+    public double getLongitudExtremoOeste() {
+        return longitudExtremoOeste;
+    }
+
+    public void setLongitudExtremoOeste(double longitudExtremoOeste) {
+        this.longitudExtremoOeste = longitudExtremoOeste;
     }
     
     public ColeccionDespacho generarListaDespachos(){
